@@ -1,5 +1,7 @@
 <?php
 
+namespace FurnitureStoreApi\Categories;
+
 class CategoryEntity
 {
     private $id;
