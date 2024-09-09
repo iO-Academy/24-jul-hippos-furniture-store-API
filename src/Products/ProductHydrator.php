@@ -1,6 +1,6 @@
 <?php
 
-namespace Example\Products;
+namespace FurnitureStoreApi\Products;
 use \PDO;
 class ProductHydrator
 {
