@@ -1,7 +1,5 @@
 <?php
 
-namespace Example\Categories;
-
 class CategoryEntity
 {
     private $id;
