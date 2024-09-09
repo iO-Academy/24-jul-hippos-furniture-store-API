@@ -19,3 +19,4 @@ catch (Exception $exception)
     file_put_contents($logPath,$errorMessage, FILE_APPEND);
     echo '<h1>Database Connection Error, look at error.log</h1>';
 }
+
