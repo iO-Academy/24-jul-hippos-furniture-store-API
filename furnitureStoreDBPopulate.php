@@ -14,7 +14,7 @@ catch (Exception $exception)
     file_put_contents($logPath,$errorMessage, FILE_APPEND);
     echo '<h1>Database Connection Error, look at error.log</h1>';
 }
-//Important note: I have changed price to a string as we haven't removed £ yet.  Maybe that is a task for later on?
+
 foreach ($json as $eachJson)
 {
     var_dump($eachJson);
