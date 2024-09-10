@@ -7,11 +7,19 @@ use \PDO;
 
 class CategoryHydrator
 {
-    public static function getCategories(PDO $db)
+    public static function getCategories()
     {
-        $query = $db->prepare('SELECT `category_id`, `category` FROM `Category`');
+        $db = new PDO('mysql:host=db;dbname=furnitureStoreProject', 'root', 'password');
+        $query = $db->prepare('SELECT `categories`.`id`, `category`, COUNT(`categories`.`id`) AS `cid` FROM `categories`
+                            JOIN `products` ON `products`.`name`= `categories`.`category`
+                            GROUP BY `category`
+                            ORDER BY `categories`.`id`');
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         return $query->fetchAll();
     }
+
+
+
+
 }

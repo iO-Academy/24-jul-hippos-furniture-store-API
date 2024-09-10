@@ -4,8 +4,8 @@ namespace FurnitureStoreApi\Categories;
 
 class CategoryEntity
 {
-    private $id;
-    private $type;
-    private $quantity;
+    private int $id;
+    private string $category;
+    private int $cid;
 
 }
