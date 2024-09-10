@@ -3,17 +3,15 @@ require_once ('vendor/autoload.php');
 header('Content-Type: application/json; charset=utf-8');
 header("Access-Control-Allow-Origin: *");
 use \FurnitureStoreApi\Categories\CategoryHydrator;
+use FurnitureStoreApi\Services\ResponseService;
 
 try
 {
-    $results = ['message'=>'Successfully retrieved products',
-        'data' => CategoryHydrator::getCategories()];
-    echo json_encode($results);
-    http_response_code(200);
+    $jsonString = CategoryHydrator::getCategories();
+    ResponseService::responseToJson('Successfully retrieved products', $jsonString,200);
 }
 catch(Exception $exception)
 {
-    http_response_code(500);
-    $results = ["message" => 'Unexpected error',  "data"=> []];
-    echo json_encode($results);
+    $jsonString = [];
+    ResponseService::responseToJson('Unexpected error',$jsonString, 500);
 }

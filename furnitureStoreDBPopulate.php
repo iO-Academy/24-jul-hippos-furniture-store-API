@@ -6,8 +6,8 @@ require('vendor/autoload.php');
 try
 {
 
-    $db = new PDO('mysql:host=db;dbname=furniture_store_test', 'root', 'password');
     $jsonRequest = file_get_contents('furnitureStore.json');
+    $db = new PDO('mysql:host=db;dbname=furniture_store_test', 'root', 'password');
     $json = json_decode($jsonRequest, true);
     foreach ($json as $eachJson)
     {
