@@ -17,8 +17,6 @@ catch (Exception $exception)
 
 foreach ($json as $eachJson)
 {
-    var_dump($eachJson);
-    echo '<br>';
     $query = $db->prepare(
         'INSERT INTO `products` (`name`, `width`, `height`, `depth`, `price`, `stock`, `related`, `color`)
                                  VALUES (:name, :width,:height,:depth,
