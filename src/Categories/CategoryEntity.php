@@ -29,8 +29,8 @@ class CategoryEntity implements \JsonSerializable
     {
         return[
             'id'=>$this->getId(),
-            'category'=>$this->getCategory(),
-            'cid'=>$this->getCid()
+            'name'=>$this->getCategory(),
+            'products'=>$this->getCid()
         ];
     }
 

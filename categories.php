@@ -1,6 +1,7 @@
 <?php
 require_once ('vendor/autoload.php');
 header('Content-Type: application/json; charset=utf-8');
+header("Access-Control-Allow-Origin: *");
 
 use \FurnitureStoreApi\Categories\CategoryHydrator;
 
