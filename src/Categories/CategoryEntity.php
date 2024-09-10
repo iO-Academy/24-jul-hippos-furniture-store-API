@@ -5,29 +5,29 @@ header('Content-Type: application/json; charset=utf-8');
 class CategoryEntity implements \JsonSerializable
 {
     private int $id;
-    private string $category;
-    private int $category_id;
+    private string $name;
+    private int $products;
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getCategory(): string
+    public function getName(): string
     {
-        return $this->category;
+        return $this->name;
     }
 
     public function getCategoryid(): int
     {
-        return $this->category_id;
+        return $this->products;
     }
 
     public function jsonSerialize(): mixed
     {
         return[
             'id'=>$this->getId(),
-            'name'=>$this->getCategory(),
+            'name'=>$this->getName(),
             'products'=>$this->getCategoryid()
         ];
     }
