@@ -10,7 +10,6 @@ class CategoryEntity implements \JsonSerializable
     private int $cid;
 
 
-
     public function getId(): int
     {
         return $this->id;

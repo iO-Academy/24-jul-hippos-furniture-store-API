@@ -5,18 +5,16 @@ header("Access-Control-Allow-Origin: *");
 
 use \FurnitureStoreApi\Categories\CategoryHydrator;
 
-$results = ['message'=>'Work damn you',
-            'data' => CategoryHydrator::getCategories()];
-
-echo json_encode($results);
-//print_r($results);
-//
-//echo '<br>';
-//echo '<br>';
-//echo '<br>';
-//echo '<br>';
-
-//foreach ($results as $result)
-//{
-//    echo json_encode($result);
-//}
+try
+{
+    $results = ['message'=>'Successfully retrieved products',
+        'data' => CategoryHydrator::getCategories()];
+    echo json_encode($results);
+    http_response_code(200);
+}
+catch(Exception $exception)
+{
+    http_response_code(500);
+    $results = ["message" => 'Unexpected error',  "data"=> []];
+    echo json_encode($results);
+}
