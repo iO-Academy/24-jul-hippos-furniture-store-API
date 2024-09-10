@@ -1,8 +1,5 @@
 <?php
-
 namespace FurnitureStoreApi\Categories;
-
-use FurnitureStoreApi\Categories\CategoryEntity;
 use \PDO;
 
 class CategoryHydrator
@@ -18,10 +15,4 @@ class CategoryHydrator
         $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         return $query->fetchAll();
     }
-
-
-
-
-
-
 }

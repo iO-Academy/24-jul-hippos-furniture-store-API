@@ -1,5 +1,4 @@
 <?php
-
 namespace FurnitureStoreApi\Products;
 
 class SimpleProductEntity

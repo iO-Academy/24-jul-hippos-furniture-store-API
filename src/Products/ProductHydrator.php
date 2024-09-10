@@ -1,7 +1,7 @@
 <?php
-
 namespace FurnitureStoreApi\Products;
 use \PDO;
+
 class ProductHydrator
 {
     public static function getProductsByCategory($PDO, $db)
