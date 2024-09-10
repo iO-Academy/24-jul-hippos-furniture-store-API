@@ -17,18 +17,28 @@ catch (Exception $exception)
     echo '<h1>Database Connection Error, look at error.log</h1>';
 }
 
-foreach ($json as $eachJson)
+$categories = ['Chair', 'Office Chair', 'Book case', 'Table', 'Draws', 'Wardrobe', 'Chest', 'Tv Stand', 'Shelves', 'Desk', 'Sofa'];
+
+//foreach ($json as $eachJson)
+//{
+//    $query = $db->prepare(
+//        'INSERT INTO `products` (`name`, `width`, `height`, `depth`, `price`, `stock`, `related`, `color`)
+//                                 VALUES (:name, :width,:height,:depth,
+//                                         :price,:stock,:related,:color)');
+//    $query->execute(['name' =>$eachJson['name'],
+//        'width'=>$eachJson['width'],
+//        'height'=>$eachJson['height'],
+//        'depth'=>$eachJson['depth'],
+//        'price'=>$eachJson['price'],
+//        'stock'=>$eachJson['stock'],
+//        'related'=>$eachJson['related'],
+//        'color'=>$eachJson['color']]);
+//}
+
+foreach ($categories as $i=>$category)
 {
     $query = $db->prepare(
-        'INSERT INTO `products` (`name`, `width`, `height`, `depth`, `price`, `stock`, `related`, `color`)
-                                 VALUES (:name, :width,:height,:depth,
-                                         :price,:stock,:related,:color)');
-    $query->execute(['name' =>$eachJson['name'],
-        'width'=>$eachJson['width'],
-        'height'=>$eachJson['height'],
-        'depth'=>$eachJson['depth'],
-        'price'=>$eachJson['price'],
-        'stock'=>$eachJson['stock'],
-        'related'=>$eachJson['related'],
-        'color'=>$eachJson['color']]);
+        'UPDATE `products` SET `category_id` = :index WHERE `name` = :name '
+    );
+    $query->execute(['index' => ($i+1), 'name' => $category]);
 }
