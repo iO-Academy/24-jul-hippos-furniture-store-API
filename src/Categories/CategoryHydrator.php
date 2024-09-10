@@ -1,12 +1,13 @@
 <?php
 namespace FurnitureStoreApi\Categories;
+use FurnitureStoreApi\Services\DbConnection;
 use \PDO;
 
 class CategoryHydrator
 {
     public static function getCategories()
     {
-        $db = new PDO('mysql:host=db;dbname=furniture_store', 'root', 'password');
+        $db = DbConnection::setConnection();
         $query = $db->prepare('SELECT `id`, `name`, COUNT(`category_id`) AS `products` FROM `products`
                             GROUP BY `category_id`
                             ORDER BY `category_id`

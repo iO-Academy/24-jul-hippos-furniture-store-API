@@ -1,6 +1,7 @@
 <?php
 namespace FurnitureStoreApi\Categories;
-header('Content-Type: application/json; charset=utf-8');
+use FurnitureStoreApi\Services\HeaderService;
+HeaderService::setHeaders();
 
 class CategoryEntity implements \JsonSerializable
 {
