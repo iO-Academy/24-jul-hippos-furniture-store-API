@@ -14,4 +14,8 @@ class CategoryHydrator
         $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         return $query->fetchAll();
     }
+
+
+
+
 }
