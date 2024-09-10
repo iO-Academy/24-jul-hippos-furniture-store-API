@@ -10,7 +10,7 @@ class CategoryHydrator
     public static function getCategories()
     {
         $db = new PDO('mysql:host=db;dbname=furniture_store', 'root', 'password');
-        $query = $db->prepare('SELECT `categories`.`id`, `category`, COUNT(`categories`.`id`) AS `cid` FROM `categories`
+        $query = $db->prepare('SELECT `categories`.`id`, `category`, COUNT(`categories`.`id`) AS `category_id` FROM `categories`
                             JOIN `products` ON `products`.`name`= `categories`.`category`
                             GROUP BY `category`
                             ORDER BY `categories`.`id`');

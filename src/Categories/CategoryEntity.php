@@ -7,7 +7,7 @@ class CategoryEntity implements \JsonSerializable
 {
     private int $id;
     private string $category;
-    private int $cid;
+    private int $category_id;
 
 
     public function getId(): int
@@ -19,9 +19,9 @@ class CategoryEntity implements \JsonSerializable
     {
         return $this->category;
     }
-    public function getCid(): int
+    public function getCategoryid(): int
     {
-        return $this->cid;
+        return $this->category_id;
     }
 
     public function jsonSerialize(): mixed
@@ -29,7 +29,7 @@ class CategoryEntity implements \JsonSerializable
         return[
             'id'=>$this->getId(),
             'name'=>$this->getCategory(),
-            'products'=>$this->getCid()
+            'products'=>$this->getCategoryid()
         ];
     }
 
