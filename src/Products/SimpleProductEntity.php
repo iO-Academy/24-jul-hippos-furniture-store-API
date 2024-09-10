@@ -5,8 +5,9 @@ namespace FurnitureStoreApi\Products;
 class SimpleProductEntity
 {
     protected int $id;
-    protected int $price;
+    protected string $name;
+    protected float $price;
     protected int $stock;
-    protected string $colour;
+    protected string $color;
     protected int $currency;
 }
