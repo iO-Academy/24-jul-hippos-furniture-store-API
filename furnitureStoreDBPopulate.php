@@ -1,8 +1,10 @@
 <?php
+
+//RUN ONCE AFTER DB (furniture_store) STRUCTURE HAS BEEN BUILT
 require('vendor/autoload.php');
+
 $jsonRequest = file_get_contents('https://dev.io-academy.uk/resources/furniture/furniture.json');
-$json = json_decode($jsonRequest, true);//This needs to be set to true for the $query below to work.
-//It threw error saying it couldn't use stdType Class.
+$json = json_decode($jsonRequest, true);
 try
 {
     $db = new PDO('mysql:host=db;dbname=furniture_store', 'root', 'password');
@@ -30,4 +32,3 @@ foreach ($json as $eachJson)
         'related'=>$eachJson['related'],
         'color'=>$eachJson['color']]);
 }
-//HAS BEEN RUN, DO NOT RUN AGAIN
