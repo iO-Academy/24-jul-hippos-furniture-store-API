@@ -4,6 +4,7 @@ use FurnitureStoreApi\Services\HeaderService;
 HeaderService::setHeaders();
 use \FurnitureStoreApi\Categories\CategoryHydrator;
 use FurnitureStoreApi\Services\ResponseService;
+use FurnitureStoreApi\Exceptions\CustomException;
 
 try
 {
@@ -13,5 +14,5 @@ try
 catch(Exception $exception)
 {
     $jsonString = [];
-    ResponseService::makeResponse('Unexpected error',$jsonString, 500);
+    ResponseService::makeResponse("Unexpected Error",$jsonString, 500);
 }

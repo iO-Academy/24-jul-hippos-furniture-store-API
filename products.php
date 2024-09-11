@@ -1,22 +1,19 @@
 <?php
 require_once ('vendor/autoload.php');
 use FurnitureStoreApi\Services\HeaderService;
-HeaderService::setHeaders();
 use FurnitureStoreApi\Products\ProductHydrator;
 use FurnitureStoreApi\Services\ResponseService;
 use FurnitureStoreApi\Services\DbConnection;
+use FurnitureStoreApi\Categories\CategoryHydrator;
+use FurnitureStoreApi\Exceptions\InvalidCategoryException;
+HeaderService::setHeaders();
 
-$db = DbConnection::setConnection();
-$query = $db->prepare('SELECT MAX(`category_id`) FROM `products`');
-$query->execute();
-$maxCategory = $query->fetch();
-$maxCategory = $maxCategory[0];
 try
 {
     $jsonString = [];
-    if ($_GET['cat']>$maxCategory)
+    if ($_GET['cat']>CategoryHydrator::getMaxCategory())
     {
-        ResponseService::makeResponse('Invalid category id', $jsonString, 400);
+        throw new InvalidCategoryException();
     }
     else
     {
@@ -24,8 +21,12 @@ try
         ResponseService::makeResponse('Successfully retrieved products', $jsonString, 200);
     }
 }
+catch (InvalidCategoryException $exception)
+{
+    ResponseService::makeResponse($exception->getMessage(), $jsonString, 400);
+}
 catch(Exception $exception)
 
     {
-        ResponseService::makeResponse('Unexpected error', $jsonString, 400);
+        ResponseService::makeResponse('Unexpected Error', $jsonString, 500);
     }

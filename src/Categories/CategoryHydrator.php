@@ -16,6 +16,16 @@ class CategoryHydrator
         $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         return $query->fetchAll();
     }
+
+    public static function getMaxCategory()
+    {
+        $db = DbConnection::setConnection();
+        $query = $db->prepare('SELECT MAX(`category_id`) FROM `products`');
+        $query->execute();
+        $maxCategory = $query->fetch();
+        $maxCategory = $maxCategory[0];
+        return $maxCategory;
+    }
 }
 
 
