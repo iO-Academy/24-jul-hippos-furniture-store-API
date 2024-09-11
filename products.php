@@ -29,5 +29,3 @@ catch(Exception $exception)
     {
         ResponseService::makeResponse('Unexpected error', $jsonString, 400);
     }
-
-

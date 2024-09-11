@@ -14,6 +14,3 @@ class ProductHydrator
         return $query->fetchALL();
     }
 }
-
-//SELECT `id`,`price`,`stock`,`color` FROM `products`
-//WHERE `category_id`='1';
