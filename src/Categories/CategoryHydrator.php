@@ -20,10 +20,10 @@ class CategoryHydrator
     public static function getMaxCategory()
     {
         $db = DbConnection::setConnection();
-        $query = $db->prepare('SELECT MAX(`category_id`) FROM `products`');
+        $query = $db->prepare('SELECT MAX(`category_id`) AS max_id FROM `products`');
         $query->execute();
         $maxCategory = $query->fetch();
-        $maxCategory = $maxCategory[0];
+        $maxCategory = $maxCategory['max_id'];
         return $maxCategory;
     }
 }
