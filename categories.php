@@ -4,7 +4,6 @@ use FurnitureStoreApi\Services\HeaderService;
 HeaderService::setHeaders();
 use \FurnitureStoreApi\Categories\CategoryHydrator;
 use FurnitureStoreApi\Services\ResponseService;
-use FurnitureStoreApi\Exceptions\CustomException;
 
 try
 {

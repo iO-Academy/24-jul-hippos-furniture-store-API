@@ -11,7 +11,7 @@ HeaderService::setHeaders();
 try
 {
     $jsonString = [];
-    if ($_GET['cat']>CategoryHydrator::getMaxCategory())
+    if ($_GET['cat']>CategoryHydrator::getMaxCategory()||$_GET['cat']<0||!is_numeric($_GET['cat']))
     {
         throw new InvalidCategoryException();
     }
@@ -26,7 +26,6 @@ catch (InvalidCategoryException $exception)
     ResponseService::makeResponse($exception->getMessage(), $jsonString, 400);
 }
 catch(Exception $exception)
-
     {
         ResponseService::makeResponse('Unexpected Error', $jsonString, 500);
     }
