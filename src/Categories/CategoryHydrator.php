@@ -8,7 +8,7 @@ class CategoryHydrator
     public static function getCategories()
     {
         $db = DbConnection::setConnection();
-        $query = $db->prepare('SELECT `id`, `name`, COUNT(`category_id`) AS `productCount` FROM `products`
+        $query = $db->prepare('SELECT `category_id` AS `id`, `name`, COUNT(`category_id`) AS `productCount` FROM `products`
                             GROUP BY `category_id`
                             ORDER BY `category_id`
                             ');
