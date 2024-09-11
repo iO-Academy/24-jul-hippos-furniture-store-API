@@ -21,6 +21,6 @@ class ProductHydrator
         $query = $db -> prepare ('SELECT `id`,`name`,`category_id`,`width`,`height`,`depth`,`price`,`stock`,`related`,`color` FROM `products` WHERE `id`= :productId');
         $query->execute(['productId'=>$productId]);
         $query->setFetchMode(PDO::FETCH_CLASS, DetailedProductEntity::class);
-        return $query->fetchALL();
+        return $query->fetch();
     }
 }

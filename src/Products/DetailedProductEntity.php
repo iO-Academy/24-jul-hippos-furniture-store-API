@@ -38,15 +38,14 @@ class DetailedProductEntity extends SimpleProductEntity
     public function jsonSerialize(): mixed
     {
         return[
-            'id'=>$this->getId(),
-            'price'=>$this->getPrice(),
-            'stock'=>$this->getStock(),
-            'color'=>$this->getColor(),
-            'category_id'=>$this->getCategoryId(),
+            'categoryId'=>$this->getCategoryId(),
             'width'=>$this->getWidth(),
             'height'=>$this->getHeight(),
             'depth'=>$this->getDepth(),
-            'related'=>$this->getRelated()
+            'price'=>$this->getPrice(),
+            'stock'=>$this->getStock(),
+            'related'=>$this->getRelated(),
+            'color'=>$this->getColor()
         ];
     }
 }

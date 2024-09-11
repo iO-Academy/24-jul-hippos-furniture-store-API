@@ -7,7 +7,7 @@ class SimpleProductEntity implements \JsonSerializable
 {
     protected int $id;
     protected string $name;
-    protected float $price;
+    protected string $price;
     protected int $stock;
     protected string $color;
     protected int $currency;
@@ -22,7 +22,7 @@ class SimpleProductEntity implements \JsonSerializable
         return $this->name;
     }
 
-    public function getPrice(): float
+    public function getPrice(): string
     {
         return $this->price;
     }
