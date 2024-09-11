@@ -3,7 +3,7 @@
 namespace FurnitureStoreApi\Services;
 class ResponseService
 {
-    public static function responseToJson($message, $jsonString, $responseCode)
+    public static function makeResponse($message, $jsonString, $responseCode)
     {
         $results = ['message'=>$message,
             'data' => $jsonString];

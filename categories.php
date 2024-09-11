@@ -8,10 +8,10 @@ use FurnitureStoreApi\Services\ResponseService;
 try
 {
     $jsonString = CategoryHydrator::getCategories();
-    ResponseService::responseToJson('Successfully retrieved products', $jsonString,200);
+    ResponseService::makeResponse('Successfully retrieved products', $jsonString,200);
 }
 catch(Exception $exception)
 {
     $jsonString = [];
-    ResponseService::responseToJson('Unexpected error',$jsonString, 500);
+    ResponseService::makeResponse('Unexpected error',$jsonString, 500);
 }
