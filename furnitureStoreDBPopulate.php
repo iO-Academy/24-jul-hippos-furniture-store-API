@@ -1,12 +1,11 @@
 <?php
-
 //RUN ONCE AFTER DB (furniture_store) STRUCTURE HAS BEEN BUILT
+use FurnitureStoreApi\Services\DbConnection;
 require('vendor/autoload.php');
 
 try
 {
-
-    $db = new PDO('mysql:host=db;dbname=furniture_store_test', 'root', 'password');
+    $db = DbConnection::setConnection();
     $jsonRequest = file_get_contents('furnitureStore.json');
     $json = json_decode($jsonRequest, true);
     foreach ($json as $eachJson)
