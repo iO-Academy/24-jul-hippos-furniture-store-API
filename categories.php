@@ -1,0 +1,17 @@
+<?php
+require_once ('vendor/autoload.php');
+use FurnitureStoreApi\Services\HeaderService;
+HeaderService::setHeaders();
+use \FurnitureStoreApi\Categories\CategoryHydrator;
+use FurnitureStoreApi\Services\ResponseService;
+
+try
+{
+    $jsonString = CategoryHydrator::getCategories();
+    ResponseService::makeResponse('Successfully retrieved products', $jsonString,200);
+}
+catch(Exception $exception)
+{
+    $jsonString = [];
+    ResponseService::makeResponse('Unexpected error',$jsonString, 500);
+}
