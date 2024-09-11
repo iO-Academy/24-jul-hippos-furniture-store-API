@@ -13,5 +13,5 @@ try
 catch(Exception $exception)
 {
     $jsonString = [];
-    ResponseService::makeResponse('Unexpected error',$jsonString, 500);
+    ResponseService::makeResponse("Unexpected Error",$jsonString, 500);
 }
