@@ -42,7 +42,7 @@ class DetailedProductEntity extends SimpleProductEntity
             'price'=>$this->getPrice(),
             'stock'=>$this->getStock(),
             'color'=>$this->getColor(),
-            'category_id'=>$this->getCategoryId(),
+            'categoryId'=>$this->getCategoryId(),
             'width'=>$this->getWidth(),
             'height'=>$this->getHeight(),
             'depth'=>$this->getDepth(),
