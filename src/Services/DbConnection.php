@@ -6,7 +6,7 @@ class DbConnection
 {
     private static $dbConnection;
 
-    public static function setConnection()
+    public static function getConnection()
     {
         if (empty(self::$dbConnection))
         {

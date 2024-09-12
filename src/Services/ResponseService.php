@@ -3,10 +3,10 @@
 namespace FurnitureStoreApi\Services;
 class ResponseService
 {
-    public static function makeResponse($message, $jsonString, $responseCode)
+    public static function makeResponse($message, $resultsArray, $responseCode)
     {
         $results = ['message'=>$message,
-            'data' => $jsonString];
+            'data' => $resultsArray];
         http_response_code($responseCode);
         echo json_encode($results);
     }
