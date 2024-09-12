@@ -14,10 +14,10 @@ try
     }
     else
     {
-        UnitConversionService::setUnit($_GET['unit']);
         if (in_array($_GET['unit'], ['mm', 'cm', 'in', 'ft']))
         {
             $resultsArray = ProductHydrator::getProductById($_GET['id']);
+            UnitConversionService::setUnit($_GET['unit']);
             ResponseService::makeResponse("Successfully retrieved product", $resultsArray, 200);
         }
         else
