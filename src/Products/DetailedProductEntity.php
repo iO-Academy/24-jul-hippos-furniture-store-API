@@ -26,7 +26,6 @@ class DetailedProductEntity extends SimpleProductEntity
         $this->width = $width;
     }
 
-
     public function getHeight(): int
     {
         return $this->height;
@@ -41,7 +40,6 @@ class DetailedProductEntity extends SimpleProductEntity
     {
         return $this->related;
     }
-
 
     public function jsonSerialize(): mixed
     {

@@ -22,7 +22,6 @@ class UnitConversionService
                     $height = round($height / 304.8, 2);
                 } else if ($unit === 'mm') {
                     return $dimensionsArray = ['height' => $height, 'width' => $width, 'depth' => $depth];
-
                 }
                 return $dimensionsArray = ['height' => $height, 'width' => $width, 'depth' => $depth];
             }
