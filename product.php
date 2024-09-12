@@ -10,7 +10,7 @@ use FurnitureStoreApi\Services\CurrencyConversionClass;
 use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
 
 try {
-    if ($_GET['id'] > ProductHydrator::getMaxProducts() && is_numeric($_GET['id'])) {
+    if ($_GET['id'] > ProductHydrator::getMaxProducts() || !is_numeric($_GET['id'])) {
         throw new InvalidProductIdException();
     } else {
         if (isset($_GET['unit'])) {

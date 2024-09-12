@@ -2,7 +2,6 @@
 
 namespace FurnitureStoreApi\Services;
 use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
-
 class CurrencyConversionClass
 {
     private static string $currency = 'GBP';
@@ -19,24 +18,21 @@ class CurrencyConversionClass
 
         }
     }
-    public static function currencyConverter(string $price): string
+    public static function currencyConverter(float $price): string
     {
         if (self::$currency === 'USD')
         {
-           $price = number_format($price * 1.19,2);
+           $price = $price * 1.19;
         }
         else if (self::$currency === 'EUR')
         {
-            $price = number_format($price * 1.16,2);
+            $price = $price * 1.16;
         }
         else if (self::$currency === 'YEN')
         {
-            $price = number_format($price * 162.16, 2);
+            $price = $price * 162.16;
         }
-        else if (self::$currency === 'GBP')
-        {
-            $price = number_format($price,2);
-        }
-        return $price;
+
+        return number_format($price,2);
     }
 }

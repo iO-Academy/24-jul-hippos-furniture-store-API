@@ -24,7 +24,7 @@ class UnitConversionService
         if ($measurement>0)
             {
                 if (self::$unit === 'cm') {
-                    $measurement = $measurement / 10;
+                    $measurement = round($measurement / 10, 2);
 
                 } else if (self::$unit === 'in') {
                     $measurement = round($measurement / 25.4, 2);
