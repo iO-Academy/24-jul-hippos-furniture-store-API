@@ -17,22 +17,18 @@ try {
     } else {
         if (in_array($_GET['currency'], ['GBP', 'USD', 'EUR', 'YEN'])) {
             CurrencyConversionClass::setCurrency($_GET['currency']);
-            $inStockOnly = 0;
-            if (isset($_GET['instockonly'])) {
-                $inStockOnly = $_GET['instockonly'];
-            }
-
-            else
-                {
-                    throw new InvalidCurrencyException();
-                }
-            }
-            $resultsArray = ProductHydrator::getProducts($_GET['cat'], $inStockOnly);
-            ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
-
+        } else {
+            throw new InvalidCurrencyException();
         }
+        $inStockOnly = 0;
+        if (isset($_GET['instockonly'])) {
+            $inStockOnly = $_GET['instockonly'];
+        }
+        $resultsArray = ProductHydrator::getProducts($_GET['cat'], $inStockOnly);
+        ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
     }
- catch (InvalidCategoryException $exception) {
+
+} catch (InvalidCategoryException $exception) {
     ResponseService::makeResponse($exception->getMessage(), [], 400);
 } catch (InvalidCurrencyException $exception) {
     ResponseService::makeResponse($exception->getMessage(), [], 400);
