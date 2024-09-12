@@ -6,10 +6,9 @@ use FurnitureStoreApi\Services\ResponseService;
 use FurnitureStoreApi\Exceptions\InvalidProductIdException;
 HeaderService::setHeaders();
 
-
 try
 {
-    $jsonString = [];
+    $jsonArray = [];
     if ($_GET['id']>ProductHydrator::getMaxProducts()
     )
     {
@@ -17,11 +16,11 @@ try
     }
     else
     {
-        $jsonString = ProductHydrator::getProductById($_GET['id']);
-        ResponseService::makeResponse("Successfully retrieved product",$jsonString,200);
+        $jsonArray = ProductHydrator::getProductById($_GET['id']);
+        ResponseService::makeResponse("Successfully retrieved product",$jsonArray,200);
     }
 }
 catch (InvalidProductIdException $exception)
 {
-    ResponseService::makeResponse($exception-> getMessage(),$jsonString,400);
+    ResponseService::makeResponse($exception-> getMessage(),$jsonArray,400);
 }

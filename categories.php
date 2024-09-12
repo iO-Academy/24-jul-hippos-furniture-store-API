@@ -7,11 +7,11 @@ use FurnitureStoreApi\Services\ResponseService;
 
 try
 {
-    $jsonString = CategoryHydrator::getCategories();
-    ResponseService::makeResponse('Successfully retrieved products', $jsonString,200);
+    $jsonArray = CategoryHydrator::getCategories();
+    ResponseService::makeResponse('Successfully retrieved products', $jsonArray,200);
 }
 catch(Exception $exception)
 {
-    $jsonString = [];
-    ResponseService::makeResponse("Unexpected Error",$jsonString, 500);
+    $jsonArray = [];
+    ResponseService::makeResponse("Unexpected Error",$jsonArray, 500);
 }

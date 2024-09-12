@@ -1,5 +1,4 @@
 <?php
-
 namespace FurnitureStoreApi\Exceptions;
 use Exception;
 
