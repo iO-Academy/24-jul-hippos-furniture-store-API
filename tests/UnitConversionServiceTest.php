@@ -15,12 +15,9 @@ class UnitConversionServiceTest extends \PHPUnit\Framework\TestCase
         $this->assertSame('Make sure you use a positive float for your measurement',$result);
     }
 
-
     public function testUnitConversionService_malformedOne()
     {
         $this->expectException(TypeError::class);
         $result = UnitConversionService::unitConverter('ten');
     }
-
-
 }

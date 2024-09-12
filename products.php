@@ -5,6 +5,8 @@ use FurnitureStoreApi\Products\ProductHydrator;
 use FurnitureStoreApi\Services\ResponseService;
 use FurnitureStoreApi\Categories\CategoryHydrator;
 use FurnitureStoreApi\Exceptions\InvalidCategoryException;
+use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
+use FurnitureStoreApi\Services\CurrencyConversionClass;
 HeaderService::setHeaders();
 
 try
@@ -15,11 +17,22 @@ try
     }
     else
     {
-        $resultsArray = ProductHydrator::getProductsByCategory($_GET['cat']);
-        ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
+        if (in_array($_GET['currency'], ['GBP','USB','EUR','YEN'])) {
+            $resultsArray = ProductHydrator::getProductsByCategory($_GET['cat']);
+            CurrencyConversionClass::setCurrency($_GET['currency']);
+            ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
+        }
+        else
+        {
+            throw new InvalidCurrencyException();
+        }
     }
 }
 catch (InvalidCategoryException $exception)
+{
+    ResponseService::makeResponse($exception->getMessage(), [], 400);
+}
+catch (InvalidCurrencyException $exception)
 {
     ResponseService::makeResponse($exception->getMessage(), [], 400);
 }

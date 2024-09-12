@@ -4,13 +4,13 @@ namespace FurnitureStoreApi\Services;
 
 class CurrencyConversionClass
 {
-    private static string $currency;
+    private static string $currency = 'GBP';
 
     public static function setCurrency(string $currency): void
     {
         self::$currency = $currency;
     }
-    public static function currencyConverter(string $price)
+    public static function currencyConverter(string $price): string
     {
         if (self::$currency === 'USD')
         {

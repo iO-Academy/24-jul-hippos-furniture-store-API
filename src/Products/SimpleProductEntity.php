@@ -23,7 +23,7 @@ class SimpleProductEntity implements \JsonSerializable
         return $this->name;
     }
 
-    public function getPrice()
+    public function getPrice(): string
     {
         return CurrencyConversionClass::currencyConverter($this->price);
 
