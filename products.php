@@ -15,10 +15,8 @@ try {
     if ($_GET['cat'] > CategoryHydrator::getMaxCategory() || $_GET['cat'] < 0 || !is_numeric($_GET['cat'])) {
         throw new InvalidCategoryException();
     } else {
-        if (in_array($_GET['currency'], ['GBP', 'USD', 'EUR', 'YEN'])) {
+        if (isset($_GET['currency'])) {
             CurrencyConversionClass::setCurrency($_GET['currency']);
-        } else {
-            throw new InvalidCurrencyException();
         }
         $inStockOnly = 0;
         if (isset($_GET['instockonly'])) {

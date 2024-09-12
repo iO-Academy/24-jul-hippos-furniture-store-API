@@ -10,23 +10,21 @@ use FurnitureStoreApi\Services\CurrencyConversionClass;
 use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
 
 try {
-    if ($_GET['id'] > ProductHydrator::getMaxProducts()) {
+    if ($_GET['id'] > ProductHydrator::getMaxProducts() && is_numeric($_GET['id'])) {
         throw new InvalidProductIdException();
     } else {
-        if (in_array($_GET['unit'], ['mm', 'cm', 'in', 'ft'])) {
-            $resultsArray = ProductHydrator::getProductById($_GET['id']);
-            if (in_array($_GET['currency'], ['GBP', 'USD', 'EUR', 'YEN'])) {
-                UnitConversionService::setUnit($_GET['unit']);
-                CurrencyConversionClass::setCurrency($_GET['currency']);
-                ResponseService::makeResponse("Successfully retrieved product", $resultsArray, 200);
-            } else {
-                throw new InvalidCurrencyException();
-            }
-        } else {
-            throw new InvalidUnitOfMeasureException();
+        if (isset($_GET['unit'])) {
+            UnitConversionService::setUnit($_GET['unit']);
         }
+
+        if (isset($_GET['currency'])) {
+                CurrencyConversionClass::setCurrency($_GET['currency']);
+            }
+        $resultsArray = ProductHydrator::getProductById($_GET['id']);
+        ResponseService::makeResponse("Successfully retrieved product", $resultsArray, 200);
     }
-} catch (InvalidProductIdException $exception) {
+    }
+ catch (InvalidProductIdException $exception) {
     ResponseService::makeResponse($exception->getMessage(), [], 400);
 } catch (InvalidUnitOfMeasureException $exception) {
     ResponseService::makeResponse($exception->getMessage(), [], 400);

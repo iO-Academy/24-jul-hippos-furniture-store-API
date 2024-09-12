@@ -1,6 +1,7 @@
 <?php
 
 namespace FurnitureStoreApi\Services;
+use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
 
 class CurrencyConversionClass
 {
@@ -8,7 +9,15 @@ class CurrencyConversionClass
 
     public static function setCurrency(string $currency): void
     {
-        self::$currency = $currency;
+        if (in_array($_GET['currency'], ['GBP', 'USD', 'EUR', 'YEN']))
+        {
+            self::$currency = $currency;
+        }
+        else
+        {
+            throw new InvalidCurrencyException();
+
+        }
     }
     public static function currencyConverter(string $price): string
     {
