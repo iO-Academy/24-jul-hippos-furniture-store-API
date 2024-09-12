@@ -8,7 +8,6 @@ HeaderService::setHeaders();
 
 try
 {
-    $jsonArray = [];
     if ($_GET['id']>ProductHydrator::getMaxProducts()
     )
     {
@@ -16,11 +15,11 @@ try
     }
     else
     {
-        $jsonArray = ProductHydrator::getProductById($_GET['id']);
-        ResponseService::makeResponse("Successfully retrieved product",$jsonArray,200);
+        $resultsArray = ProductHydrator::getProductById($_GET['id']);
+        ResponseService::makeResponse("Successfully retrieved product",$resultsArray,200);
     }
 }
 catch (InvalidProductIdException $exception)
 {
-    ResponseService::makeResponse($exception-> getMessage(),$jsonArray,400);
+    ResponseService::makeResponse($exception-> getMessage(),[],400);
 }

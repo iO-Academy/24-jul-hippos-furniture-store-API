@@ -10,22 +10,21 @@ HeaderService::setHeaders();
 
 try
 {
-    $jsonArray = [];
     if ($_GET['cat']>CategoryHydrator::getMaxCategory()||$_GET['cat']<0||!is_numeric($_GET['cat']))
     {
         throw new InvalidCategoryException();
     }
     else
     {
-        $jsonArray = ProductHydrator::getProductsByCategory($_GET['cat']);
-        ResponseService::makeResponse('Successfully retrieved products', $jsonArray, 200);
+        $resultsArray = ProductHydrator::getProductsByCategory($_GET['cat']);
+        ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
     }
 }
 catch (InvalidCategoryException $exception)
 {
-    ResponseService::makeResponse($exception->getMessage(), $jsonArray, 400);
+    ResponseService::makeResponse($exception->getMessage(), [], 400);
 }
 catch(Exception $exception)
     {
-        ResponseService::makeResponse('Unexpected Error', $jsonArray, 500);
+        ResponseService::makeResponse('Unexpected Error', [], 500);
     }
