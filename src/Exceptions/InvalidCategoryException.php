@@ -2,7 +2,7 @@
 
 namespace FurnitureStoreApi\Exceptions;
 
-use TheSeer\Tokenizer\Exception;
+use \Exception;
 
 
 class InvalidCategoryException extends Exception

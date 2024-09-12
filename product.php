@@ -5,6 +5,7 @@ use FurnitureStoreApi\Products\ProductHydrator;
 use FurnitureStoreApi\Services\ResponseService;
 use FurnitureStoreApi\Exceptions\InvalidProductIdException;
 use FurnitureStoreApi\Exceptions\InvalidUnitOfMeasureException;
+use FurnitureStoreApi\Services\UnitConversionService;
 try
 {
     if ($_GET['id']>ProductHydrator::getMaxProducts())
@@ -13,7 +14,8 @@ try
     }
     else
     {
-        if ($_GET['unit'] === 'mm'||$_GET['unit'] === 'cm'||$_GET['unit'] === 'in'||$_GET['unit'] === 'ft')
+        UnitConversionService::setUnit($_GET['unit']);
+        if (in_array($_GET['unit'], ['mm', 'cm', 'in', 'ft']))
         {
             $resultsArray = ProductHydrator::getProductById($_GET['id']);
             ResponseService::makeResponse("Successfully retrieved product", $resultsArray, 200);

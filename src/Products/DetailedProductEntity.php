@@ -21,11 +21,6 @@ class DetailedProductEntity extends SimpleProductEntity
         return $this->width;
     }
 
-    public function setWidth(int $width): void
-    {
-        $this->width = $width;
-    }
-
     public function getHeight(): int
     {
         return $this->height;
@@ -43,7 +38,7 @@ class DetailedProductEntity extends SimpleProductEntity
 
     public function jsonSerialize(): mixed
     {
-        $dimensions = UnitConversionService::unitConverter($_GET['unit'], $this->getDepth(),$this->getWidth(),$this->getHeight());
+        $dimensions = UnitConversionService::unitConverter(UnitConversionService::getUnit(), $this->getDepth(),$this->getWidth(),$this->getHeight());
         return[
             'id'=>$this->getId(),
             'price'=>$this->getPrice(),
