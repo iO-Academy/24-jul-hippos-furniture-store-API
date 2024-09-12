@@ -11,9 +11,9 @@ class UnitConversionService
         self::$unit = $unit;
     }
 
-    public static function unitConverter($measurement): float
+    public static function unitConverter(float $measurement): float|string
     {
-        if ($measurement>0 && is_numeric($measurement))
+        if ($measurement>0)
             {
                 if (self::$unit === 'cm') {
                     $measurement = $measurement / 10;
@@ -27,7 +27,7 @@ class UnitConversionService
             }
         else
             {
-                return 'Make sure you have used the right dimensions or units in the parameters';
+                return 'Make sure you use a positive float for your measurement';
             }
     }
 }
