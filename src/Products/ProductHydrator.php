@@ -23,4 +23,13 @@ class ProductHydrator
         $query->setFetchMode(PDO::FETCH_CLASS, DetailedProductEntity::class);
         return $query->fetch();
     }
+    public static function getMaxProducts()
+    {
+        $db = DbConnection::setConnection();
+        $query = $db->prepare('SELECT MAX(`related`) AS max_id FROM `products`');
+        $query->execute();
+        $maxProducts = $query->fetch();
+        $maxProducts = $maxProducts['max_id'];
+        return $maxProducts;
+    }
 }
