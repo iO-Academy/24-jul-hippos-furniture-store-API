@@ -1,6 +1,7 @@
 <?php
 namespace FurnitureStoreApi\Products;
 use FurnitureStoreApi\Products\SimpleProductEntity as SimpleProductEntity;
+use FurnitureStoreApi\Services\UnitConversionService;
 
 class DetailedProductEntity extends SimpleProductEntity
 {
@@ -15,19 +16,19 @@ class DetailedProductEntity extends SimpleProductEntity
         return $this->category_id;
     }
 
-    public function getWidth(): int
+    public function getWidth(): float
     {
-        return $this->width;
+        return UnitConversionService::unitConverter($this->width);
     }
 
-    public function getHeight(): int
+    public function getHeight(): float
     {
-        return $this->height;
+        return UnitConversionService::unitConverter($this->height);
     }
 
-    public function getDepth(): int
+    public function getDepth(): float
     {
-        return $this->depth;
+        return UnitConversionService::unitConverter($this->depth);
     }
 
     public function getRelated(): int
@@ -43,8 +44,8 @@ class DetailedProductEntity extends SimpleProductEntity
             'stock'=>$this->getStock(),
             'color'=>$this->getColor(),
             'categoryId'=>$this->getCategoryId(),
-            'width'=>$this->getWidth(),
             'height'=>$this->getHeight(),
+            'width'=>$this->getWidth(),
             'depth'=>$this->getDepth(),
             'related'=>$this->getRelated()
         ];

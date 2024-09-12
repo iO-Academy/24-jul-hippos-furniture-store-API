@@ -2,9 +2,10 @@
 
 namespace FurnitureStoreApi\Exceptions;
 
-use Throwable;
+use \Exception;
 
-class InvalidCategoryException extends \Exception
+
+class InvalidCategoryException extends Exception
 {
   public function __construct($message = "Invalid Category")
   {
