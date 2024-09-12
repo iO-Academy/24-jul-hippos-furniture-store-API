@@ -3,7 +3,6 @@ require_once ('vendor/autoload.php');
 use FurnitureStoreApi\Services\HeaderService;
 use FurnitureStoreApi\Products\ProductHydrator;
 use FurnitureStoreApi\Services\ResponseService;
-use FurnitureStoreApi\Services\DbConnection;
 use FurnitureStoreApi\Categories\CategoryHydrator;
 use FurnitureStoreApi\Exceptions\InvalidCategoryException;
 HeaderService::setHeaders();

@@ -42,17 +42,20 @@ class DetailedProductEntity extends SimpleProductEntity
         return $this->related;
     }
 
+
     public function jsonSerialize(): mixed
     {
+        $dimensions = UnitConversionService::unitConverter($_GET['unit'], $this->getDepth(),$this->getWidth(),$this->getHeight());
         return[
-            'categoryId'=>$this->getCategoryId(),
-            'width'=>UnitConversionService::widthUnitConverter('in',$this->getWidth()),
-            'height'=>UnitConversionService::heightUnitConverter('in',$this->getHeight()),
-            'depth'=>UnitConversionService::depthUnitConverter('in',$this->getDepth()),
+            'id'=>$this->getId(),
             'price'=>$this->getPrice(),
             'stock'=>$this->getStock(),
-            'related'=>$this->getRelated(),
-            'color'=>$this->getColor()
+            'color'=>$this->getColor(),
+            'categoryId'=>$this->getCategoryId(),
+            'height'=>$dimensions['height'],
+            'width'=>$dimensions['width'],
+            'depth'=>$dimensions['depth'],
+            'related'=>$this->getRelated()
         ];
     }
 }
