@@ -6,36 +6,24 @@ class UnitConversionService
 {
     private static string $unit;
 
-    public static function getUnit(): string
-    {
-        return self::$unit;
-    }
-
     public static function setUnit(string $unit): void
     {
         self::$unit = $unit;
     }
 
-    public static function unitConverter(string $unit, int $depth, int $width, int $height): array|string
+    public static function unitConverter($measurement): float
     {
-        if ((in_array($unit, ['mm', 'cm', 'in', 'ft'])) && $depth>0 && $width>0 && $height>0)
+        if ($measurement>0 && is_numeric($measurement))
             {
-                if ($unit === 'cm') {
-                    $depth = $depth / 10;
-                    $width = $width / 10;
-                    $height = $height / 10;
-                } else if ($unit === 'in') {
-                    $depth = round($depth / 25.4, 2);
-                    $width = round($width / 25.4, 2);
-                    $height = round($height / 25.4, 2);
-                } else if ($unit === 'ft') {
-                    $depth = round($depth / 304.8, 2);
-                    $width = round($width / 304.8, 2);
-                    $height = round($height / 304.8, 2);
-                } else if ($unit === 'mm') {
-                    return $dimensionsArray = ['height' => $height, 'width' => $width, 'depth' => $depth];
+                if (self::$unit === 'cm') {
+                    $measurement = $measurement / 10;
+
+                } else if (self::$unit === 'in') {
+                    $measurement = round($measurement / 25.4, 2);
+                } else if (self::$unit === 'ft') {
+                    $measurement = round($measurement / 304.8, 2);
                 }
-                return $dimensionsArray = ['height' => $height, 'width' => $width, 'depth' => $depth];
+                return $measurement;
             }
         else
             {
