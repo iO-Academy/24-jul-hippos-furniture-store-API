@@ -15,7 +15,7 @@ try
     }
     else
     {
-        $resultsArray = ProductHydrator::getProductsByCategory($_GET['cat']);
+        $resultsArray = ProductHydrator::getProductsByInStock($_GET['cat'], $_GET['instockonly']);
         ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
     }
 }
