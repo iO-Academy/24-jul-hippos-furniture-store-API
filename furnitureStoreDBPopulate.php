@@ -5,7 +5,7 @@ require('vendor/autoload.php');
 
 try
 {
-    $db = DbConnection::setConnection();
+    $db = DbConnection::getConnection();
     $jsonRequest = file_get_contents('furnitureStore.json');
     $json = json_decode($jsonRequest, true);
     foreach ($json as $eachJson)

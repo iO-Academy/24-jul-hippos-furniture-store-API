@@ -5,11 +5,11 @@ use FurnitureStoreApi\Services\UnitConversionService;
 
 class DetailedProductEntity extends SimpleProductEntity
 {
-    protected int $category_id;
-    protected int $width;
-    protected int $height;
-    protected int $depth;
-    protected int $related;
+    private int $category_id;
+    private int $width;
+    private int $height;
+    private int $depth;
+    private int $related;
 
     public function getCategoryId(): int
     {
