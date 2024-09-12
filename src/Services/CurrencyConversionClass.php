@@ -24,6 +24,6 @@ class CurrencyConversionClass
         {
             $price = number_format($price * 162.16, 2);
         }
-        return $price;
+        return number_format($price,2);
     }
 }
