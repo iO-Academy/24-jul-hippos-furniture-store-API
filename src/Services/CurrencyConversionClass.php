@@ -4,23 +4,25 @@ namespace FurnitureStoreApi\Services;
 
 class CurrencyConversionClass
 {
-    public static function currencyConverter($currency, $price)
+    private static string $currency;
+
+    public static function setCurrency(string $currency): void
     {
-        if ($currency === 'USD')
+        self::$currency = $currency;
+    }
+    public static function currencyConverter(string $price)
+    {
+        if (self::$currency === 'USD')
         {
-             $price * 1.19;
+           $price = number_format($price * 1.19,2);
         }
-        else if ($currency === 'EUR')
+        else if (self::$currency === 'EUR')
         {
-             $price * 1.16;
+            $price = number_format($price * 1.16,2);
         }
-        else if ($currency === 'YEN')
+        else if (self::$currency === 'YEN')
         {
-             $price * 162.16;
-        }
-        else if ($currency === 'GPB')
-        {
-            return $price;
+            $price = number_format($price * 162.16, 2);
         }
         return $price;
     }

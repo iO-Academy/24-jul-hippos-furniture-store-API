@@ -6,6 +6,7 @@ use FurnitureStoreApi\Services\ResponseService;
 use FurnitureStoreApi\Exceptions\InvalidProductIdException;
 use FurnitureStoreApi\Exceptions\InvalidUnitOfMeasureException;
 use FurnitureStoreApi\Services\UnitConversionService;
+use FurnitureStoreApi\Services\CurrencyConversionClass;
 try
 {
     if ($_GET['id']>ProductHydrator::getMaxProducts())
@@ -18,6 +19,7 @@ try
         {
             $resultsArray = ProductHydrator::getProductById($_GET['id']);
             UnitConversionService::setUnit($_GET['unit']);
+            CurrencyConversionClass::setCurrency($_GET['currency']);
             ResponseService::makeResponse("Successfully retrieved product", $resultsArray, 200);
         }
         else
