@@ -1,27 +1,38 @@
 <?php
 
 namespace FurnitureStoreApi\Services;
-
+use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
 class CurrencyConversionClass
 {
-    public static function currencyConverter($currency, $price)
+    private static string $currency = 'GBP';
+
+    public static function setCurrency(string $currency): void
     {
-        if ($currency === 'USD')
+        if (in_array($currency, ['GBP', 'USD', 'EUR', 'YEN']))
         {
-             $price * 1.19;
+            self::$currency = $currency;
         }
-        else if ($currency === 'EUR')
+        else
         {
-             $price * 1.16;
+            throw new InvalidCurrencyException();
+
         }
-        else if ($currency === 'YEN')
+    }
+    public static function currencyConverter(float $price): string
+    {
+        if (self::$currency === 'USD')
         {
-             $price * 162.16;
+           $price = $price * 1.19;
         }
-        else if ($currency === 'GPB')
+        else if (self::$currency === 'EUR')
         {
-            return $price;
+            $price = $price * 1.16;
         }
-        return $price;
+        else if (self::$currency === 'YEN')
+        {
+            $price = $price * 162.16;
+        }
+
+        return number_format($price,2);
     }
 }

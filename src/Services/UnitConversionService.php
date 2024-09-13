@@ -1,14 +1,22 @@
 <?php
 
 namespace FurnitureStoreApi\Services;
+use FurnitureStoreApi\Exceptions\InvalidUnitOfMeasureException;
 
 class UnitConversionService
 {
-    private static string $unit;
+    private static string $unit = 'mm';
 
     public static function setUnit(string $unit): void
     {
-        self::$unit = $unit;
+        if (in_array($unit, ['mm', 'cm', 'in', 'ft']))
+        {
+            self::$unit = $unit;
+        }
+        else
+        {
+            throw new InvalidUnitOfMeasureException();
+        }
     }
 
     public static function unitConverter(float $measurement): float|string
@@ -16,7 +24,7 @@ class UnitConversionService
         if ($measurement>0)
             {
                 if (self::$unit === 'cm') {
-                    $measurement = $measurement / 10;
+                    $measurement = round($measurement / 10, 2);
 
                 } else if (self::$unit === 'in') {
                     $measurement = round($measurement / 25.4, 2);

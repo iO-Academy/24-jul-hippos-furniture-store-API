@@ -1,5 +1,6 @@
 <?php
 namespace FurnitureStoreApi\Products;
+use FurnitureStoreApi\Services\CurrencyConversionClass;
 use FurnitureStoreApi\Services\HeaderService;
 HeaderService::setHeaders();
 
@@ -22,9 +23,9 @@ class SimpleProductEntity implements \JsonSerializable
         return $this->name;
     }
 
-    public function getPrice(): float
+    public function getPrice(): string
     {
-        return $this->price;
+        return CurrencyConversionClass::currencyConverter($this->price);
     }
 
     public function getStock(): int
