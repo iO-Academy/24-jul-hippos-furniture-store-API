@@ -8,7 +8,7 @@ class CurrencyConversionClass
 
     public static function setCurrency(string $currency): void
     {
-        if (in_array($_GET['currency'], ['GBP', 'USD', 'EUR', 'YEN']))
+        if (in_array($currency, ['GBP', 'USD', 'EUR', 'YEN']))
         {
             self::$currency = $currency;
         }

@@ -3,12 +3,25 @@
 use FurnitureStoreApi\Services\UnitConversionService as UnitConversionService;
 class UnitConversionServiceTest extends \PHPUnit\Framework\TestCase
 {
-    public function testUnitConversionService_success()
+    public function testUnitConversionService_successOne()
     {
-
+        UnitConversionService::setUnit('cm');
         $result = UnitConversionService::unitConverter(1000);
-        $this->assertSame(1000.0, $result);
+        $this->assertSame(100.0, $result);
     }
+    public function testUnitConversionService_successTwo()
+    {
+        UnitConversionService::setUnit('in');
+        $result = UnitConversionService::unitConverter(1000);
+        $this->assertSame(39.37, $result);
+    }
+    public function testUnitConversionService_successThree()
+    {
+        UnitConversionService::setUnit('ft');
+        $result = UnitConversionService::unitConverter(1000);
+        $this->assertSame(3.28, $result);
+    }
+
 
     public function testUnitConversionService_failureOne()
     {

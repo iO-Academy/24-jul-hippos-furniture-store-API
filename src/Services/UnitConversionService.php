@@ -9,7 +9,7 @@ class UnitConversionService
 
     public static function setUnit(string $unit): void
     {
-        if (in_array($_GET['unit'], ['mm', 'cm', 'in', 'ft']))
+        if (in_array($unit, ['mm', 'cm', 'in', 'ft']))
         {
             self::$unit = $unit;
         }
