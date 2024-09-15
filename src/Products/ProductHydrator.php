@@ -1,9 +1,9 @@
 <?php
 namespace FurnitureStoreApi\Products;
 use FurnitureStoreApi\Services\DbConnection;
-use FurnitureStoreApi\Products\DetailedProductEntity;
+use FurnitureStoreApi\Services\HeaderService;
 use \PDO;
-
+HeaderService::setHeaders();
 class ProductHydrator
 {
     public static function getProductById($productId)

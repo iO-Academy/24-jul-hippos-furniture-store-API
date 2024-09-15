@@ -2,6 +2,7 @@
 
 namespace FurnitureStoreApi\Services;
 use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
+HeaderService::setHeaders();
 class CurrencyConversionClass
 {
     private static string $currency = 'GBP';
