@@ -33,6 +33,10 @@ class CurrencyConversionClass
         {
             $price = number_format($price * 162.16);
         }
+        else if (self::$currency === 'GBP')
+        {
+            $price = number_format($price, 2);
+        }
 
         return $price;
     }

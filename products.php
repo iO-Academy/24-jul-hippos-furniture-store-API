@@ -23,11 +23,11 @@ try {
             $inStockOnly = $_GET['instockonly'];
         }
         $resultsArray = ProductHydrator::getProducts($_GET['cat'], $inStockOnly);
-        ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
+        echo ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
     }
 
 } catch (InvalidCategoryException|InvalidCurrencyException $exception) {
-    ResponseService::makeResponse($exception->getMessage(), [], 400);
+    echo ResponseService::makeResponse($exception->getMessage(), [], 400);
 } catch (Exception $exception) {
-    ResponseService::makeResponse('Unexpected Error', [], 500);
+    echo ResponseService::makeResponse('Unexpected Error', [], 500);
 }
