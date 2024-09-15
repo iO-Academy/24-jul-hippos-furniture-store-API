@@ -8,6 +8,8 @@ use FurnitureStoreApi\Exceptions\InvalidUnitOfMeasureException;
 use FurnitureStoreApi\Services\UnitConversionService;
 use FurnitureStoreApi\Services\CurrencyConversionClass;
 use FurnitureStoreApi\Exceptions\InvalidCurrencyException;
+use FurnitureStoreApi\Services\HeaderService;
+HeaderService::setHeaders();
 
 try {
     if ($_GET['id'] > ProductHydrator::getMaxProducts() || !is_numeric($_GET['id'])) {

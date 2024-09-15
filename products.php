@@ -12,7 +12,7 @@ use FurnitureStoreApi\Services\CurrencyConversionClass;
 HeaderService::setHeaders();
 
 try {
-    if ($_GET['cat'] > CategoryHydrator::getMaxCategory() || $_GET['cat'] < 0 || !is_numeric($_GET['cat'])) {
+    if ($_GET['cat'] > CategoryHydrator::getMaxCategory() || $_GET['cat'] < 1 || !is_numeric($_GET['cat'])) {
         throw new InvalidCategoryException();
     } else {
         if (isset($_GET['currency'])) {
@@ -26,9 +26,7 @@ try {
         ResponseService::makeResponse('Successfully retrieved products', $resultsArray, 200);
     }
 
-} catch (InvalidCategoryException $exception) {
-    ResponseService::makeResponse($exception->getMessage(), [], 400);
-} catch (InvalidCurrencyException $exception) {
+} catch (InvalidCategoryException|InvalidCurrencyException $exception) {
     ResponseService::makeResponse($exception->getMessage(), [], 400);
 } catch (Exception $exception) {
     ResponseService::makeResponse('Unexpected Error', [], 500);

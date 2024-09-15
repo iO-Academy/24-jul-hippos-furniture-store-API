@@ -3,7 +3,7 @@
 namespace FurnitureStoreApi\Services;
 class ResponseService
 {
-    public static function makeResponse($message, $resultsArray, $responseCode)
+    public static function makeResponse($message, $resultsArray, $responseCode): void
     {
         $results = ['message'=>$message,
             'data' => $resultsArray];
