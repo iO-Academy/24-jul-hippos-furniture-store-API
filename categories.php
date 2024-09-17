@@ -8,9 +8,9 @@ HeaderService::setHeaders();
 try
 {
     $resultsArray = CategoryHydrator::getCategories();
-    ResponseService::makeResponse('Successfully retrieved products', $resultsArray,200);
+    echo ResponseService::makeResponse('Successfully retrieved products', $resultsArray,200);
 }
 catch(Exception $exception)
 {
-    ResponseService::makeResponse("Unexpected Error",[], 500);
+    echo ResponseService::makeResponse("Unexpected Error",[], 500);
 }
