@@ -37,7 +37,6 @@ class CurrencyConversionClass
         {
             $price = number_format($price, 2);
         }
-
         return $price;
     }
 }
