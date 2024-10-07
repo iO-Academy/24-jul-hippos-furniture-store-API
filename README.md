@@ -10,9 +10,9 @@ We will exercise SOLID principles through planning and implementation.
 
 Return all product categories
 URL
-
+```
 /categories.php
-
+```
 Method:
 
 GET
@@ -22,11 +22,11 @@ URL Params
 There are no URL params
 
 Example:
-
+```
 /categories.php
-
+```
 Success Response:
-
+```
 Code: 200
 Content:
 {
@@ -45,15 +45,18 @@ Content:
 }
 ]
 }
+```
 Error Response:
-
+```
 Code: 500 SERVER ERROR
 Content: {"message": "Unexpected error", "data": []}
+```
+
 Return all products in a category
 URL
-
+```
 /products.php
-
+```
 Method:
 
 GET
@@ -70,11 +73,11 @@ currency - currency unit to provide price in. Choose from: GBP,USD,EUR,YEN. Defa
 instockonly - boolean choose to only return in-stock products. Default is 0
 
 Example:
-
+```
 /products.php?cat=2&currency=GBP&instockonly=0
-
+```
 Success Response:
-
+```
 Code: 200
 Content:
 {
@@ -95,8 +98,9 @@ Content:
 }
 ]
 }
+```
 Error Response:
-
+```
 Code: 400 BAD REQUEST
 Content: {"message": "Invalid category id", "data": []}
 
@@ -105,12 +109,12 @@ Content: {"message": "Invalid currency", "data": []}
 
 Code: 500 SERVER ERROR
 Content: {"message": "Unexpected error", "data": []}
-
+```
 Return all details about a specific product
 URL
-
+```
 /product.php
-
+```
 Method:
 
 GET
@@ -127,11 +131,11 @@ unit - unit of measure to provide dimensions in. Choose from: mm,cm,in,ft. Defau
 currency - currency unit to provide price in. Choose from: GBP,USD,EUR,YEN. Defualt is GBP
 
 Example:
-
+```
 /product.php?id=2&unit=mm&currency=GBP
-
+```
 Success Response:
-
+```
 Code: 200
 Content:
 {
@@ -148,8 +152,9 @@ Content:
 "color": "Teal"
 }
 }
+```
 Error Response:
-
+```
 Code: 400 BAD REQUEST
 Content: {"message": "Invalid product id", "data": []}
 
@@ -161,3 +166,4 @@ Content: {"message": "Invalid unit of measure", "data": []}
 
 Code: 500 SERVER ERROR
 Content: {"message": "Unexpected error", "data": []}
+```
